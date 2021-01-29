@@ -29,8 +29,10 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
-  
-    include "modules/cabezote.php"
+    // <HEADER></HEADER>
+    include "modules/cabezote.php";
+    // <MAIN></MAIN>
+    include "modules/menu.php";
 
   ?>
 </div>
