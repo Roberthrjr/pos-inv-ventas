@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>La Gran Familia R&S</title>
+  <!-- ICONO DEL SISTEMA -->
+  <link rel="icon" href="view/img/plantilla/icono-negro.png">
 
   <!-- PLUGINS DE CSS -->
   <!-- Google Font: Source Sans Pro -->
@@ -25,17 +27,40 @@
 </head>
 
 <!-- CUERPO DOCUMENTO -->
-<body class="hold-transition sidebar-collapse sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+<body class="hold-transition sidebar-collapse sidebar-mini login-page">
   <?php
-    // <HEADER></HEADER>
-    include "modules/cabezote.php";
-    // <MAIN></MAIN>
-    include "modules/menu.php";
+  if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
 
+    echo '<div class="wrapper">';
+    // CABECERA
+    include "modules/cabezote.php";
+    // BARRA LATERAL
+    include "modules/menu.php";
+    // CONTENIDO
+    if(isset($_GET["ruta"])){
+      if($_GET["ruta"] == "inicio" ||
+        $_GET["ruta"] == "usuarios" ||
+        $_GET["ruta"] == "categorias" ||
+        $_GET["ruta"] == "productos" ||
+        $_GET["ruta"] == "clientes" ||
+        $_GET["ruta"] == "admin-venta" ||
+        $_GET["ruta"] == "crear-venta" ||
+        $_GET["ruta"] == "report-venta"){
+        include "modules/".$_GET["ruta"].".php";
+      }else{
+        include "modules/404.php";
+      }
+    }else{
+      include "modules/inicio.php";
+    }
+    // PIE DE PÁGINA
+    include "modules/footer.php";
+
+    echo '</div>';
+    
+  }else{
+    include "modules/login.php";
+  }
   ?>
-</div>
-<!-- ./wrapper -->
 </body>
 </html>
