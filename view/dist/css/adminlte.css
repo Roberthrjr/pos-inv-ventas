@@ -21812,7 +21812,8 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .register-page {
   -ms-flex-align: center;
   align-items: center;
-  background-color: #e9ecef;
+  /* background-color: #e9ecef; */
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,30,50,1));
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -21820,6 +21821,19 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   height: 100vh;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+/* FONDO AGREGADO EN EL LOGIN ID BACK */
+.login-page #back{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background: url('../../img/plantilla/back.png');
+  background-size:cover;
+  overflow:hidden;
+  z-index:-1;
 }
 
 .login-box,

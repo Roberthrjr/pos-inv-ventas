@@ -29,7 +29,8 @@
 <!-- CUERPO DOCUMENTO -->
 <body class="hold-transition sidebar-collapse sidebar-mini login-page">
   <?php
-  if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
+
+    if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
 
     echo '<div class="wrapper">';
     // CABECERA
