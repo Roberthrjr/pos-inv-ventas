@@ -5,7 +5,8 @@ class ControladorUsuarios{
     public function ctrIngresoUsuario(){
         if(isset($_POST["ingUsuario"])){
 
-            if(preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingPassword"])){
+            if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && 
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
 
                 $tabla = "usuarios";
 

@@ -9,8 +9,9 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingresar al sistema</p>
-      <form method="post">
 
+      <form method="post">
+        <!-- ENTRADA DE TEXTO PARA USUARIO -->
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Usuario" name="ingUsuario" required>
           <div class="input-group-append">
@@ -19,7 +20,7 @@
             </div>
           </div>
         </div>
-
+        <!-- ENTRADA DE TEXTO PARA PASSWORD -->
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" required>
           <div class="input-group-append">
@@ -28,7 +29,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- CONTENEDOR DE BOTONES -->
         <div class="row">
           <!-- BOTON DE INGRESAR -->
@@ -38,8 +39,10 @@
         </div>
 
         <?php
+
           $login = new ControladorUsuarios();
           $login -> ctrIngresoUsuario();
+          
         ?>
 
       </form>
