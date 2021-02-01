@@ -29,8 +29,7 @@
                     </li>
                     <!-- MENU DE USUARIO FOOTER-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                        <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+                        <a href="salir" class="btn btn-default btn-flat float-right">Cerrar Sesión</a>
                     </li>
                 </ul>
             </li>
