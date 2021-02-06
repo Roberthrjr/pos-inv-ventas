@@ -207,13 +207,6 @@
           <button type="submit" class="btn btn-primary">Guardar usuario</button>
         </div>
 
-        <?php
-        
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
-
-        ?>
-
       </form>
 
       </div>

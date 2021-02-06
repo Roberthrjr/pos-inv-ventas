@@ -1,3 +1,4 @@
+<body class="hold-transition sidebar-collapse sidebar-mini login-page">
 <div id="back"></div>
 <div class="login-box">
   <!-- LOGO DEL SISTEMA -->
@@ -50,3 +51,4 @@
     <!-- CARTA DE INICIO DE SESION-->
   </div>
 </div>
+</body>

@@ -3,7 +3,7 @@
     <!-- LOGOTIPO EN LA BARRA LATERAL -->
     <a href="inicio" class="brand-link">
         <img src="view/dist/img/AdminLTELogo.png" alt="LOGO" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">La Gran Familia R&S</span>
     </a>
 
     <!-- BARRA LATERAL -->

@@ -2,7 +2,7 @@
 
 class ControladorUsuarios{
     // METODO PARA EL INGRESO DE USUARIOS 
-    public function ctrIngresoUsuario(){
+    static public function ctrIngresoUsuario(){
         if(isset($_POST["ingUsuario"])){
 
             if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && 
@@ -28,5 +28,10 @@ class ControladorUsuarios{
             }
 
         }
+    }
+
+    // REGISTRO DE USUARIO
+    static public function ctrCrearUsuario(){
+        if(isset($_POST))
     }
 }
