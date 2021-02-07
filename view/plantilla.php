@@ -45,6 +45,8 @@
   <script src="view/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="view/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+  <!-- Sweetalert2 -->
+  <script src="view/plugins/sweetalert2/sweetalert2.all.js"></script>
   
 </head>
 
@@ -92,6 +94,7 @@
 
     echo '</div>';
     echo '<script src="view/js/plantilla.js"></script>';
+    echo '<script src="view/js/usuarios.js"></script>';
     echo '</body>';
   }else{
 

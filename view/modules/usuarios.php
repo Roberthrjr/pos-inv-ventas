@@ -175,7 +175,7 @@
                     <i class="fas fa-users"></i>
                   </span>
                 </div>
-                <select class="form-control">
+                <select class="form-control" name="nuevoPerfil">
                   <option value="">Seleccionar perfil</option>
                   <option value="Administrador">Administrador</option>
                   <option value="Especial">Especial</option>
@@ -190,10 +190,10 @@
             <div class="form-group">
               <label for="nuevaFoto">Seleccionar foto</label>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="nuevaFoto">
+                <input type="file" class="custom-file-input" name="nuevaFoto">
                 <label class="custom-file-label" for="nuevaFoto">Seleccionar archivo</label>
                 <p class="help-block">Peso máximo de la foto 2 MB</p>
-                <img src="view/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+                <img src="view/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
               </div>
             </div>
 
