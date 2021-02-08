@@ -1,4 +1,4 @@
-$(".tabla").DataTable(
+$(".tablas").DataTable(
     {
         "language": {
             "sProcessing": "Procesando...",
