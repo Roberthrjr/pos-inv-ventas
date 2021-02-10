@@ -3,7 +3,7 @@
 <div class="login-box">
   <!-- LOGO DEL SISTEMA -->
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="login"><b>La Gran Familia </b>R&S</a>
   </div>
   <!-- /.login-logo -->
   <!-- CARTA DE INICIO DE SESIÓN -->

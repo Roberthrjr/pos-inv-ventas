@@ -187,7 +187,7 @@
                   <i class="fas fa-smile"></i>
                 </span>
               </div>
-                <input type="text" class="form-control" name="nuevoUsuario" placeholder="Ingresar usuario" required>
+                <input type="text" class="form-control" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar usuario" required>
               </div>
             </div>
 

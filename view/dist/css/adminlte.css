@@ -21805,7 +21805,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-logo a,
 .register-logo a {
-  color: #495057;
+  color: #d1f15a;
 }
 
 .login-page,
@@ -21830,7 +21830,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   left:0;
   width:100%;
   height:100vh;
-  background: url('../../img/plantilla/back.png');
+  /* background: url('../../img/plantilla/back.png'); */
   background-size:cover;
   overflow:hidden;
   z-index:-1;

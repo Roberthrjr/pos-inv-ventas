@@ -36,6 +36,13 @@ class AjaxUsuarios{
         $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
     }
+
+    //VALIDAR NO REPETIR USUARIO
+    public $validarUsuario;
+
+    public function ajaxValidarUsuario(){
+        
+    }
 }
 
 // EDITAR USUARIO

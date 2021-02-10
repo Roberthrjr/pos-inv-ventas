@@ -117,3 +117,25 @@ $(".btnActivar").click(function(){
     }
 
 })
+
+// REVISAR SI EL USUARIO YA ESTA REGISTRADO
+$("#nuevoUsuario").change(function(){
+
+    var usuario = $(this).val();
+
+    var datos = new FormData();
+    datos.append("validarUsuario", usuario);
+
+    $.ajax({
+        url:rutaOculta+"ajax/usuarios.ajax.php",
+        method:"POST",
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+            console.log("respuesta",respuesta);
+        }
+    })
+
+})
