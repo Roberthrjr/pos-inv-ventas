@@ -22,7 +22,7 @@ class ModeloUsuarios{
 
     // INGRESAR USUARIO
     static public function mdlIngresarUsuario($tabla, $datos){
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, password, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, usuario, password, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
@@ -75,6 +75,23 @@ class ModeloUsuarios{
         $stmt -> close();
         $stmt = null;
 
+    }
+
+    // BORRAR USUARIO
+    static public function mdlBorrarUsuario($tabla, $datos){
+        
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+
+        $stmt -> bindParam(":id", $datos, PDO::PARAM_STR);
+
+        if($stmt -> execute()){
+            return "ok";
+        }else{
+            return "error";
+        }
+
+        $stmt -> close();
+        $stmt = null;
     }
     
 }

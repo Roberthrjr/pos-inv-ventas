@@ -76,9 +76,13 @@
                         <td>'.$value["usuario"].'</td>';
 
                         if($value["foto"] != ""){
+
                           echo '<td><img src="'.$value["foto"].'" class="img-thumbnail" width="40px"></td>';
+
                         }else{
+
                           echo '<td><img src="view/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                          
                         }
 
                 echo '<td>'.$value["perfil"].'</td>';
@@ -101,8 +105,8 @@
                             <!--EDITAR USUARIO-->
                             <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-pencil-alt"></i></button>
                             
-                            <!--DESACTIVAR USUARIO-->
-                            <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                            <!--BORRAR USUARIO-->
+                            <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["id"].'" fotoUsuario="'.$value["foto"].'" usuario="'.$value["usuario"].'"><i class="fas fa-times"></i></button>
                           </div>
                         </td>
                       </tr>';
@@ -158,7 +162,7 @@
         <div class="modal-header" style="background:#007bff; color:white;">
           <h4 class="modal-title">Agregar Usuario</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
           </button>
         </div>
         
@@ -226,7 +230,7 @@
             <div class="form-group">
               <label for="nuevaFoto">Seleccionar foto</label>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" name="nuevaFoto">
+                <input type="file" class="custom-file-input nuevaFoto" name="nuevaFoto">
                 <label class="custom-file-label" for="nuevaFoto">Seleccionar archivo</label>
                 <p class="help-block">Peso máximo de la foto 2 MB</p>
                 <img src="view/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
@@ -341,7 +345,7 @@
           <div class="form-group">
             <label for="editarFoto">Seleccionar foto</label>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" name="editarFoto">
+              <input type="file" class="custom-file-input nuevaFoto" name="editarFoto">
               <label class="custom-file-label" for="editarFoto">Seleccionar archivo</label>
               <p class="help-block">Peso máximo de la foto 2 MB</p>
               <img src="view/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
@@ -374,3 +378,9 @@
       <!-- /.modal-dialog -->
 </div>
 
+
+<?php 
+
+  $borrarUsuario = new ControladorUsuarios();
+  $borrarUsuario -> ctrBorrarUsuario();
+?>

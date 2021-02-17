@@ -1,15 +1,13 @@
 // SUBIENDO LA FOTO DEL USUARIO
-$(".custom-file-input").change(function(){
+$(".nuevaFoto").change(function(){
 
     var imagen = this.files[0];
-
-    console.log("imagen", imagen);
 
     // VALIDANDO EL FORMATO DE LA IMAGEN
 
     if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
         
-        $(".custom-file-input").val("");
+        $(".nuevaFoto").val("");
         
         Swal.fire({
             icon: 'error',
@@ -20,7 +18,7 @@ $(".custom-file-input").change(function(){
 
     }else if(imagen["size"] > 2000000){
 
-        $(".custom-file-input").val("");
+        $(".nuevaFoto").val("");
         
         Swal.fire({
             icon: 'error',
@@ -44,7 +42,9 @@ $(".custom-file-input").change(function(){
 })
 
 // EDITAR USUARIO USUARIO
-$(".btnEditarUsuario").click(function(){
+// $(".btnEditarUsuario").click(function(){
+$(document).on("click", ".btnEditarUsuario", function(){
+
     var idUsuario = $(this).attr("idUsuario");
 
     var datos = new FormData();
@@ -64,13 +64,12 @@ $(".btnEditarUsuario").click(function(){
             $("#editarUsuario").val(respuesta["usuario"]);
             $("#editarPerfil").html(respuesta["perfil"]);
             $("#editarPerfil").val(respuesta["perfil"]);
-
             $("#passwordActual").val(respuesta["password"]);
             $("#fotoActual").val(respuesta["foto"]);
 
 
             if(respuesta["foto"] != ""){
-                console.log(respuesta["foto"]);
+
                 $(".previsualizar").attr("src", respuesta["foto"]);
             }
             
@@ -79,7 +78,8 @@ $(".btnEditarUsuario").click(function(){
 })
 
 // ACTIVAR USUARIO
-$(".btnActivar").click(function(){
+// $(".btnActivar").click(function(){
+$(document).on("click", ".btnActivar", function(){
 
     var idUsuario = $(this).attr("idUsuario");
     var estadoUsuario = $(this).attr("estadoUsuario");
@@ -97,6 +97,20 @@ $(".btnActivar").click(function(){
         processData: false,
         success: function(respuesta){
 
+            if(window.matchMedia("(max-width:767px)").matches){
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'El usuario ha sido actualizado',
+                    confirmButtonText: 'Cerrar'
+                }).then((result) => {
+                    if (result.value) {
+            
+                        window.location = "usuarios";
+                
+                    }
+                  });
+            }
         }
     })
 
@@ -121,21 +135,53 @@ $(".btnActivar").click(function(){
 // REVISAR SI EL USUARIO YA ESTA REGISTRADO
 $("#nuevoUsuario").change(function(){
 
+    $(".alert").remove();
+
     var usuario = $(this).val();
 
     var datos = new FormData();
     datos.append("validarUsuario", usuario);
 
     $.ajax({
-        url:rutaOculta+"ajax/usuarios.ajax.php",
+        url:"ajax/usuarios.ajax.php",
         method:"POST",
+        data: datos,
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuesta",respuesta);
+            if(respuesta){
+                $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe</div>');
+                $("#nuevoUsuario").val("");
+            }
         }
     })
 
+})
+
+// ELIMINAR USUARIO
+// $(".btnEliminarUsuario").click(function(){
+$(document).on("click",".btnEliminarUsuario",function(){
+    
+    var idUsuario = $(this).attr("idUsuario");
+    var fotoUsuario = $(this).attr("fotoUsuario");
+    var usuario = $(this).attr("usuario");
+
+    Swal.fire({
+        icon: 'warning',
+        title: '¿Esta seguro de eliminar usuario?',
+        text: 'Si esta seguro, presiones en el boton azul',
+        showCancelButton: true,
+        confirmButtonColor:'#3085d6',
+        cancelButtonColor:'#d33',
+        confirmButtonText: 'Si, deseo eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+
+            window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&usuario="+usuario+"&fotoUsuario="+fotoUsuario;
+    
+        }
+      });
 })

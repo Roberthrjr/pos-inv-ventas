@@ -13,9 +13,10 @@ class ControladorUsuarios{
 
     // METODO PARA EL INGRESO DE USUARIOS 
     static public function ctrIngresoUsuario(){
+
         if(isset($_POST["ingUsuario"])){
 
-            if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && 
+            if( preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && 
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
 
                 $encriptar = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
@@ -32,36 +33,36 @@ class ControladorUsuarios{
                     // VERIFICAR EL ESTADO PARA MANDAR LAS VARIABLES DE SESIÒN
                     if($respuesta["estado"] == 1){
 
-                    $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id"];
-                    $_SESSION["nombre"] = $respuesta["nombre"];
-                    $_SESSION["usuario"] = $respuesta["usuario"];
-                    $_SESSION["foto"] = $respuesta["foto"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["foto"] = $respuesta["foto"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
 
-                    // REGISTRAR LA FECHA PARA SABER EL ULTIMO LOGIN
-                    date_default_timezone_set('America/Lima');
+                        // REGISTRAR LA FECHA PARA SABER EL ULTIMO LOGIN
+                        date_default_timezone_set('America/Lima');
 
-                    $fecha = date('y-m-d');
-                    $hora = date('H:i:s');
+                        $fecha = date('y-m-d');
+                        $hora = date('H:i:s');
 
-                    $fechaActual = $fecha.' '.$hora;
+                        $fechaActual = $fecha.' '.$hora;
 
-                    $item1 = "ultimo_login";
-                    $valor1 = $fechaActual;
+                        $item1 = "ultimo_login";
+                        $valor1 = $fechaActual;
 
-                    $item2 = "id";
-                    $valor2 = $respuesta["id"];
+                        $item2 = "id";
+                        $valor2 = $respuesta["id"];
 
-                    $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
-                    if($ultimoLogin == "ok"){
-                        echo '<script>
+                        if($ultimoLogin == "ok"){
+                            echo '<script>
 
-                            window.location = "inicio";
+                                window.location = "inicio";
 
-                        </script>';
-                    }
+                            </script>';
+                        }
 
                     }else{
                         echo '<br><div class="alert alert-danger">El usuario aún no está activado</div>';
@@ -77,6 +78,7 @@ class ControladorUsuarios{
 
     // REGISTRO DE USUARIO
     static public function ctrCrearUsuario(){
+
         if(isset($_POST["nuevoUsuario"])){
 
             if( preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
@@ -97,7 +99,11 @@ class ControladorUsuarios{
 
                     $directorio = "view/img/usuarios/".$_POST["nuevoUsuario"];
 
-                    mkdir($directorio, 0755);
+                    if(!file_exists($directorio)){
+                        
+                        mkdir($directorio, 0755);
+                    
+                    }
 
                     // DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 
@@ -106,12 +112,14 @@ class ControladorUsuarios{
                         // GUARDAR LA IMAGEN EN EL DIRECTORIO
 
                         $aleatorio = mt_rand(100,999);
+
                         $ruta = "view/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
 
                         $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAlto, $nuevoAlto, $ancho, $alto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 
                         imagejpeg($destino, $ruta);
 
@@ -120,18 +128,34 @@ class ControladorUsuarios{
                     if($_FILES["nuevaFoto"]["type"] == "image/png"){
 
                         // GUARDAR LA IMAGEN EN EL DIRECTORIO
-
                         $aleatorio = mt_rand(100,999);
+
                         $ruta = "view/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
 
                         $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAlto, $nuevoAlto, $ancho, $alto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 
                         imagepng($destino, $ruta);
 
                     }
+
+                }else{
+
+                    echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡El usuario no ha subido foto de perfil!',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar',
+                        closeOnConfirm: false
+                    }).then((result)=>{
+                            if(result.value){
+                                window.location = 'usuarios';
+                            }
+                    })</script>";
 
                 }
                 
@@ -141,18 +165,33 @@ class ControladorUsuarios{
                 $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$usesomesillystringforsalt$');
 
                 $datos = array("nombre" => $_POST["nuevoNombre"],
-                    "usuario" => $_POST["nuevoUsuario"],
-                    "password" => $encriptar,
-                    "perfil" => $_POST["nuevoPerfil"],
-                    "foto" => $ruta);
+                                "usuario" => $_POST["nuevoUsuario"],
+                                "password" => $encriptar,
+                                "perfil" => $_POST["nuevoPerfil"],
+                                "foto" => $ruta);
 
                 $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
                 
                 if($respuesta == "ok"){
+
                     echo "<script>
                     Swal.fire({
                         icon: 'success',
                         title: '¡El usuario ha sido guardado correctamente!',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar',
+                        closeOnConfirm: false
+                    }).then((result)=>{
+                            if(result.value){
+                                window.location = 'usuarios';
+                            }
+                    })</script>";
+
+                }elseif($respuesta == "error"){
+                    echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡El usuario no ha sido guardado correctamente!',
                         showConfirmButton: true,
                         confirmButtonText: 'Cerrar',
                         closeOnConfirm: false
@@ -207,7 +246,10 @@ class ControladorUsuarios{
                         unlink($_POST["fotoActual"]);
 
                     }else{
-                        mkdir($directorio, 0755);
+                        if (!file_exists($directorio)) {
+                            // Si no existe el directorio lo crea
+                            mkdir($directorio, 0755);
+                        }
                     }
 
                     // DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -314,6 +356,44 @@ class ControladorUsuarios{
                                     window.location = 'usuarios';
                                 }
                         })</script>";
+            }
+
+        }
+    }
+
+    // BORRAR USUARIO
+    static public function ctrBorrarUsuario(){
+        
+        if(isset($_GET["idUsuario"])){
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
+
+            if($_GET["fotoUsuario"] != ""){
+
+                unlink($_GET["fotoUsuario"]);
+                rmdir('view/img/usuarios/'.$_GET["usuario"]);
+
+            }
+
+            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+
+            if($respuesta == "ok"){
+
+                echo '<script>
+                    Swal.fire({
+                    icon: "success",
+                    title: "EL usuario ha sido eliminado",
+                    text: "Si esta seguro, presiones en el boton azul",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar"
+                    }).then((result) => {
+                        if (result.value) {
+            
+                            window.location = "usuarios";
+                
+                        }
+                    })
+                    </script>';
             }
 
         }
