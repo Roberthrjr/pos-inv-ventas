@@ -43,7 +43,7 @@
         <!-- CUERPO DE LA CARTA -->
         <div class="card-body">
           <!-- CREACION DE TABLA PARA EL MANEJO DE USUARIOS O GESTIÓN DE USUARIOS -->
-          <table class="table table-bordered table-striped table-responsive tabla">
+          <table class="table table-bordered table-striped table-responsive-lg tablas">
             <!-- CABECERA DE LA TABLA USUARIOS -->
             <thead>
               <tr>
