@@ -22,29 +22,16 @@
       <!-- CONTENEDOR DE LA TABLA O CARTA DE CONTENIDO -->
       <div class="card">
 
-        <!-- BOTON DE AGREGAR USUARIOS EN LA TABLA -->
+        <!-- BOTON DE AGREGAR CATEGORIA EN LA TABLA -->
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCategoria">
           Agregar Categoría
         </button>
 
-        <!-- CABECERA DE LA CARTA -->
-        <!-- <div class="card-header">
-          <h3 class="card-title">Title</h3>
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div> -->
-
         <!-- CUERPO DE LA CARTA -->
         <div class="card-body">
-          <!-- CREACION DE TABLA PARA EL MANEJO DE USUARIOS O GESTIÓN DE USUARIOS -->
+          <!-- CREACION DE TABLA PARA EL MANEJO DE CATEGORIAS O GESTIÓN DE CATEGORIAS -->
           <table class="table table-bordered table-striped table-responsive-lg tablas">
-            <!-- CABECERA DE LA TABLA USUARIOS -->
+            <!-- CABECERA DE LA TABLA CATEGORIAS -->
             <thead>
               <tr>
                 <th>#</th>
@@ -52,7 +39,7 @@
                 <th>Acciones</th>
               </tr>
             </thead>
-            <!-- CUERPO DE LA TABLA USUARIOS -->
+            <!-- CUERPO DE LA TABLA CATEGORIAS -->
             <tbody>
             <?php
 
@@ -81,12 +68,7 @@
             </tbody>
           </table>
         </div>
-
-        <!-- FOOTER DE LA CARTA -->
-        <!-- <div class="card-footer">
-          Footer
-        </div> -->
-
+        
       </div>
       <!-- /.card -->
 
