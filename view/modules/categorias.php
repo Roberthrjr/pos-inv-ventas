@@ -110,7 +110,6 @@
                 <input type="text" class="form-control" name="nuevaCategoria" placeholder="Ingresar categoría" required>
               </div>
             </div>
-
           </div>
         </div>
 

@@ -97,6 +97,7 @@
     echo '</div>';
     echo '<script src="view/js/plantilla.js"></script>';
     echo '<script src="view/js/usuarios.js"></script>';
+    echo '<script src="view/js/productos.js"></script>';
     echo '<script src="view/js/categorias.js"></script>';
     echo '</body>';
   }else{
