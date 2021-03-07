@@ -46,7 +46,9 @@
   <script src="view/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="view/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="view/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+  <!-- InputMask -->
+  <script src="view/plugins/moment/moment.min.js"></script>
+  <script src="view/plugins/inputmask/jquery.inputmask.min.js"></script>
   <!-- Sweetalert2 -->
   <script src="view/plugins/sweetalert2/sweetalert2.all.js"></script>
   
@@ -74,9 +76,10 @@
         $_GET["ruta"] == "categorias" ||
         $_GET["ruta"] == "productos" ||
         $_GET["ruta"] == "clientes" ||
-        $_GET["ruta"] == "admin-venta" ||
+        $_GET["ruta"] == "ventas" ||
         $_GET["ruta"] == "crear-venta" ||
-        $_GET["ruta"] == "report-venta" ||
+        $_GET["ruta"] == "editar-venta" ||
+        $_GET["ruta"] == "reportes" ||
         $_GET["ruta"] == "salir"){
           
         include "modules/".$_GET["ruta"].".php";
@@ -99,6 +102,7 @@
     echo '<script src="view/js/usuarios.js"></script>';
     echo '<script src="view/js/productos.js"></script>';
     echo '<script src="view/js/categorias.js"></script>';
+    echo '<script src="view/js/clientes.js"></script>';
     echo '</body>';
   }else{
 

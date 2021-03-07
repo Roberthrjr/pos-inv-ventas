@@ -57,7 +57,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="admin-venta" class="nav-link">
+                <a href="ventas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Administrar ventas
@@ -73,7 +73,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="report-venta" class="nav-link">
+                <a href="reportes" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Reporte de ventas
