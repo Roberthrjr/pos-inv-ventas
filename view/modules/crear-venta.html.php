@@ -51,30 +51,7 @@
                           <i class="fas fa-key"></i>
                         </span>
                       </div>
-                      <?php
-                        $item = null;
-                        $valor = null;
-
-                        $ventas = ControladorVentas::ctrMostrarVentas($item,$valor);
-
-                        if(!$ventas){
-
-                          echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
-                        
-                        }else{
-
-                          foreach($ventas as $key => $value){
-
-                          }
-
-                          $codigo = $value["codigo"] + 1;
-                          
-                          echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-
-                        }
-
-                      ?>
-                  
+                      <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" readonly>
                     </div>
                   </div>
 
@@ -114,7 +91,7 @@
                   <!-- ENTRADA PARA AGREGAR PRODUCTO -->
                   <div class="form-group row nuevoProducto">
 
-                    <!-- <div class="col-md-6">
+                    <div class="col-md-6">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <button type="button" class="btn btn-danger">
@@ -140,15 +117,10 @@
                         </div>
                         <input type="number" min="1" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" placeholder="00000" readonly required>  
                       </div>
-                    </div> -->
+                    </div>
 
                   </div>
-  
-                  <input type="hidden" id="listaProductos" name="listaProductos">
 
-                  <!--=====================================
-                  BOTÓN PARA AGREGAR PRODUCTO EN DISPOSITIVOS
-                  ======================================-->
                   <button type="button" class="btn btn-default d-xl-none btnAgregarProducto">Agregar producto</button>
 
                   <hr>

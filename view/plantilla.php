@@ -51,6 +51,8 @@
   <script src="view/plugins/inputmask/jquery.inputmask.min.js"></script>
   <!-- Sweetalert2 -->
   <script src="view/plugins/sweetalert2/sweetalert2.all.js"></script>
+  <!-- jqueryNumber -->
+  <script src="view/plugins/jqueryNumber/jquerynumber.min.js"></script>
   
 </head>
 
@@ -103,6 +105,7 @@
     echo '<script src="view/js/productos.js"></script>';
     echo '<script src="view/js/categorias.js"></script>';
     echo '<script src="view/js/clientes.js"></script>';
+    echo '<script src="view/js/ventas.js"></script>';
     echo '</body>';
   }else{
 
