@@ -24,3 +24,7 @@ ADMINISTRADOR DE VENTAS:
 REGISTRAR VENTAS:
 
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/Roberthrjr/pos-inv-ventas/master/screen/crear_venta.png)
+
+BASE DE DATOS RELACIONAL:
+
+![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/Roberthrjr/pos-inv-ventas/master/screen/bd_pos.png)
