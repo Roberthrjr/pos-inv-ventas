@@ -26,10 +26,17 @@
         <div class="card-header">
           <!-- BOTON DE AGREGAR CLIENTES EN LA TABLA -->
           <a href="crear-venta">
-            <button class="btn btn-primary btn-block">
+            <button class="btn btn-primary">
               Agregar venta
             </button>
           </a>
+
+          <!-- Date and time range -->
+          <button type="button" class="btn btn-default float-right" id="daterange-btn">
+            <i class="far fa-calendar"></i> Rango de fecha
+            <i class="fas fa-caret-down"></i>
+          </button>
+
         </div>
 
         <!-- CUERPO DE LA CARTA -->
@@ -82,13 +89,13 @@
                 
                         echo '<td>'.$respuestaUsuario["nombre"].'</td>
                         <td>'.$value["metodo_pago"].'</td>
-                        <td>$ '.number_format($value["neto"],2).'</td>
-                        <td>$ '.number_format($value["total"],2).'</td>
+                        <td>S/ '.number_format($value["neto"],2).'</td>
+                        <td>S/ '.number_format($value["total"],2).'</td>
                         <td>'.$value["fecha"].'</td>               
                         <td>                
                           <div class="btn-group">
 
-                            <button class="btn btn-info"><i class="fas fa-print"></i></button>
+                            <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'"><i class="fas fa-print"></i></button>
                 
                             <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fas fa-pencil-alt"></i></button>
                 
