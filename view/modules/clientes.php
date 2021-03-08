@@ -135,7 +135,7 @@
                     <i class="fas fa-key"></i>
                   </span>
                 </div>
-                <input type="number" min="0" class="form-control" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="text"  class="form-control" data-inputmask='"mask": "99999999"' data-mask name="nuevoDocumentoId" placeholder="Ingresar documento" required>
               </div>
             </div>
 

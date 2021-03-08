@@ -212,9 +212,11 @@
                   <!--=====================================
                   ENTRADA MÉTODO DE PAGO
                   ======================================-->
-                  <div class="form-group row">
-                    <div class="col-md-7">
+                  <div class="form-row">
+
+                    <div class="col-md-10">
                       <div class="input-group">
+
                         <div class="input-group-prepend">
                           <span class="input-group-text">
                             <i class="fas fa-hand-holding-usd"></i>
@@ -226,20 +228,13 @@
                           <option value="TC">Tarjeta Crédito</option>
                           <option value="TD">Tarjeta Débito</option>
                         </select>
+
                       </div>
                     </div>
 
-                    <div class="col-md-5">
-                      <div class="input-group">
-                        <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código de transacción" required>
-                        
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <div class="cajasMetodoPago"></div>
+                    <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+
                   </div>
 
                 </div>
@@ -249,6 +244,12 @@
                 </div>
 
               </form>
+              <?php
+
+                $guardarVenta = new ControladorVentas();
+                $guardarVenta -> ctrCrearVenta();
+
+              ?>
             </div>
           </div>
 
