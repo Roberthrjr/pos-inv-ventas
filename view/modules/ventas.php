@@ -101,6 +101,12 @@
               ?>
             </tbody>
           </table>
+          <?php
+            
+            $eliminarVenta = new ControladorVentas();
+            $eliminarVenta -> ctrEliminarVenta();
+                            
+          ?>
         </div>
 
       </div>
