@@ -1,7 +1,6 @@
 /*=============================================
 VARIABLE LOCAL STORAGE
 =============================================*/
-
 if(localStorage.getItem("capturarRango") != null){
 
 	$("#daterange-btn span").html(localStorage.getItem("capturarRango"));
@@ -26,7 +25,7 @@ $('#daterange-btn').daterangepicker(
       'Este Mes'  : [moment().startOf('month'), moment().endOf('month')],
       'Mes Pasado'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     },
-    startDate: moment().subtract(29, 'days'),
+    startDate: moment(),
     endDate  : moment()
   },
   function (start, end) {
@@ -53,4 +52,46 @@ $(".daterangepicker .drp-buttons .cancelBtn").on("click", function(){
 	localStorage.removeItem("capturarRango");
 	localStorage.clear();
 	window.location = "ventas";
+})
+
+/*=============================================
+CAPTURAR HOY
+=============================================*/
+$(".daterangepicker .ranges li").on("click", function(){
+
+	var textoHoy = $(this).attr("data-range-key");
+
+	if(textoHoy == "Hoy"){
+
+        var d = new Date();
+        
+        var dia = d.getDate();
+        var mes = d.getMonth()+1;
+        var año = d.getFullYear();
+
+        if(mes < 10 && dia < 10){
+
+            var fechaInicial = año+"-0"+mes+"-0"+dia;
+            var fechaFinal = año+"-0"+mes+"-0"+dia;
+
+        }
+        
+        if(dia < 10 && mes > 10){
+
+            var fechaInicial = año+"-"+mes+"-0"+dia;
+            var fechaFinal = año+"-"+mes+"-0"+dia;
+
+        }else if(mes < 10 && dia > 10){
+
+            var fechaInicial = año+"-0"+mes+"-"+dia;
+            var fechaFinal = año+"-0"+mes+"-"+dia;
+
+        } 
+
+        	localStorage.setItem("capturarRango", "Hoy");
+
+        	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+
+	}
+
 })

@@ -62,10 +62,19 @@
               <!-- DATOS DE EJEMPLO DE USUARIOS -->
               <?php
 
-                $item = null;
-                $valor = null;
+                if(isset($_GET["fechaInicial"])){
 
-                $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
+                  $fechaInicial = $_GET["fechaInicial"];
+                  $fechaFinal = $_GET["fechaFinal"];
+                
+                }else{
+
+                  $fechaInicial = null;
+                  $fechaFinal = null;
+                
+                }
+
+                $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
 
                 foreach ($respuesta as $key => $value) {
         
