@@ -26,7 +26,7 @@
         <div class="card-header">
           <!-- BOTON DE AGREGAR CLIENTES EN LA TABLA -->
           <a href="crear-venta">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary btn-block">
               Agregar venta
             </button>
           </a>
