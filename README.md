@@ -28,3 +28,6 @@ REGISTRAR VENTAS:
 BASE DE DATOS RELACIONAL:
 
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/Roberthrjr/pos-inv-ventas/master/screen/bd_pos.png)
+
+USUARIO: roberth
+CONTRASEÑA: roberth
