@@ -1,3 +1,18 @@
+<?php
+
+if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
+
+  echo '<script>
+
+    window.location = "inicio";
+
+  </script>';
+
+  return;
+
+}
+
+?>
 <div class="content-wrapper">
   <!-- CABECERA DEL CONTENIDO-->
   <section class="content-header">
@@ -23,8 +38,13 @@
     <div class="card">
 
       <div class="card-header">
+        <!-- Date and time range -->
+        <button type="button" class="btn btn-default" id="daterange-btn2">
+          <i class="far fa-calendar"></i> Rango de fecha
+          <i class="fas fa-caret-down"></i>
+        </button>
         <div class="card-tools">
-          
+
         </div>
       </div>
 

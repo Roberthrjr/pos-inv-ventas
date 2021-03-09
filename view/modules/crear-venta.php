@@ -1,3 +1,18 @@
+<?php
+
+if($_SESSION["perfil"] == "Especial"){
+
+  echo '<script>
+
+    window.location = "inicio";
+
+  </script>';
+
+  return;
+
+}
+
+?>
 <div class="content-wrapper">
     <!-- CABECERA DEL CONTENIDO-->
     <section class="content-header">

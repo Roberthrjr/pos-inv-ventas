@@ -1,3 +1,18 @@
+<?php
+
+if($_SESSION["perfil"] == "Especial"){
+
+  echo '<script>
+
+    window.location = "inicio";
+
+  </script>';
+
+  return;
+
+}
+
+?>
 <div class="content-wrapper">
     <!-- CABECERA DEL CONTENIDO-->
     <section class="content-header">
@@ -71,10 +86,14 @@
                         <td>'.$value["ultima_compra"].'</td>
                         <td>'.$value["fecha"].'</td>
                         <td>
-                          <div class="btn-group">
-                            <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$value["id"].'"><i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn btn-danger btnEliminarCliente" idCliente="'.$value["id"].'"><i class="fas fa-times"></i></button>
-                          </div>
+                          <div class="btn-group">';
+                          if($_SESSION["perfil"] == "Administrador"){
+
+                            echo  '<button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$value["id"].'"><i class="fas fa-pencil-alt"></i></button>
+                                  <button class="btn btn-danger btnEliminarCliente" idCliente="'.$value["id"].'"><i class="fas fa-times"></i></button>';
+                                  
+                          }
+                          echo '</div>
                         </td>
                       </tr>';
 
